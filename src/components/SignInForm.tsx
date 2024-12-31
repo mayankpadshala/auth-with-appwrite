@@ -2,10 +2,10 @@
 import { useRouter } from 'next/navigation'
 import React from 'react'
 import AuthButton from './AuthButton'
-import { signUp } from '@/actions/auth'
+import { signIn } from '@/actions/auth'
 
 // Define the SignUpForm component
-const SignUpForm = () => {
+const SignInForm = () => {
 
   const [error, setError] = React.useState<string | null>(null);
   const [loading, setLoading] = React.useState<boolean>(false);
@@ -19,7 +19,7 @@ const SignUpForm = () => {
     console.log(event.target);
 
     const formData = new FormData(event.currentTarget);
-    const result = await signUp(formData);
+    const result = await signIn(formData);
 
     if (result?.error) {
       setError(result.error);
@@ -33,20 +33,6 @@ const SignUpForm = () => {
     <div>
         {/* Render the form */}
         <form onSubmit={handleSubmit} className='w-full flex flex-col gap-4'>
-            <div>
-                <label className='block text-sm font-medium text-gray-200'>
-                    Username
-                </label>
-                {/* Input for username */}
-                <input
-                    type='text'
-                    placeholder='Username'
-                    id='username'
-                    name='username'
-                    className='mt-1 w-full px-4 p-2 h-10 rounded-md border border-gray-200'
-                />
-            </div>
-
             <div>
                 <label className='block text-sm font-medium text-gray-200'>
                     Email
@@ -68,7 +54,7 @@ const SignUpForm = () => {
                 {/* Input for password */}
                 <input
                     type='password'
-                    placeholder='password'
+                    placeholder='=password'
                     id='password'
                     name='password'
                     className='mt-1 w-full px-4 p-2 h-10 rounded-md border border-gray-200'
@@ -76,7 +62,7 @@ const SignUpForm = () => {
             </div>
             <div className='mt4'>
                 {/* Submit button */}
-                <AuthButton type='signup' loading={loading} />
+                <AuthButton type='signin' loading={loading} />
             </div>
             {error && <p className='text-red-500'>{error}</p>}
         </form>
@@ -85,4 +71,4 @@ const SignUpForm = () => {
 }
 
 // Export the SignUpForm component as the default export
-export default SignUpForm
+export default SignInForm

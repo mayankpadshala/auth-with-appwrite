@@ -1,8 +1,12 @@
+import { getLoggedInUser } from '@/actions/auth';
 import SignUpForm from '@/components/SignUpForm'
 import Link from 'next/link'
+import { redirect } from 'next/navigation';
 import React from 'react'
 
-const SignUp = () => {
+const SignUp = async () => {
+  const user: UserDetails | null = await getLoggedInUser();
+  if (user) redirect('/');
   return (
     <div className='w-full flex mt-20 justify-center'>
         <section className='flex flex-col w-[400px]'>
