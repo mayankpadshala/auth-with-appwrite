@@ -68,7 +68,7 @@ const SignUpForm = () => {
                 {/* Input for password */}
                 <input
                     type='password'
-                    placeholder='=password'
+                    placeholder='password'
                     id='password'
                     name='password'
                     className='mt-1 w-full px-4 p-2 h-10 rounded-md border border-gray-200'
