@@ -4,7 +4,7 @@ const AuthButton = ({
     type,
     loading
 }: {
-    type: "login" | "signup",
+    type: "signin" | "signup",
     loading: boolean
 }) => {
   return (
@@ -19,7 +19,7 @@ const AuthButton = ({
     >
         {loading
         ? 'Loading...'
-        : type === 'login'
+        : type === 'signin'
             ? 'Sign In'
             : 'Sign Up'}
     </button>
